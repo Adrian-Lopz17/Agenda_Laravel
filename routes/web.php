@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CategoriasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+Route::middleware(['auth:sanctum', 'verified'])->group(function(){
+    Route::get('/dashboard',[CategoriasController::class, 'index'])->name('dashboard');
+
+    Route::get('/categoria',[CategoriasController::class, 'add']);
+    Route::post('/categoria',[CategoriasController::class, 'create']);
+
+    Route::get('/categoria/{categoria}', [CategoriasController::class, 'edit']);
+    Route::post('/categoria/{categoria}', [CategoriasController::class, 'update']);
+});
