@@ -12,6 +12,7 @@
                 <form method="POST" action="/persona/{{ $persona->id }}">
 
                     <div class="form-group">
+                        <label for="nombre" class="col-md-2 control-label">Nombre</label>
                         <textarea name="nombre"
                                   class="bg-gray-100 rounded border border-gray-400 leading-normal resize-none w-full h-20 py-2 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white">{{$persona->nombre }}</textarea>
                         @if ($errors->has('nombre'))
@@ -20,8 +21,56 @@
                     </div>
 
                     <div class="form-group">
-                        <button type="submit" name="actualizar"
-                                class="bg-blue-500 hover:bg-blue-700  font-bold py-2 px-4 rounded">Actualizar contacto
+                        <label for="apellidos" class="col-md-2 control-label">Apellidos</label>
+                        <textarea name="apellidos"
+                                  class="bg-gray-100 rounded border border-gray-400 leading-normal resize-none w-full h-20 py-2 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white">{{$persona->apellidos }}</textarea>
+                        @if ($errors->has('apellidos'))
+                            <span class="text-danger">{{ $errors->first('apellidos') }}</span>
+                        @endif
+                    </div>
+
+                    <div class="form-group">
+                        <label for="telefono" class="col-md-2 control-label">Teléfono</label>
+                        <textarea name="telefono"
+                                  class="bg-gray-100 rounded border border-gray-400 leading-normal resize-none w-full h-20 py-2 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white">{{$persona->telefono }}</textarea>
+                        @if ($errors->has('telefono'))
+                            <span class="text-danger">{{ $errors->first('telefono') }}</span>
+                        @endif
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nombre" class="col-md-2 control-label">Favorito</label>
+                        <textarea name="estrella"
+                                  class="bg-gray-100 rounded border border-gray-400 leading-normal resize-none w-full h-20 py-2 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white">{{$persona->estrella }}</textarea>
+                        @if ($errors->has('estrella'))
+                            <span class="text-danger">{{ $errors->first('estrella') }}</span>
+                        @endif
+                    </div>
+
+                    <div class="form-group">
+                        <label for="categoria_id" class="col-md-2 control-label">Categoría</label>
+                        <select name='categoria_id'
+                                class="bg-gray-100 rounded border border-gray-400 leading-normal resize-none w-full h-20 py-2 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white">
+                            <option value='{{$persona->categoria_id}}' selected>
+                                {{auth()->user()->categorias[$persona->categoria_id-1]->nombre}}
+                            </option>
+
+                            @foreach(auth()->user()->categorias as $categoria)
+                                @if($categoria->id != $persona->categoria_id){
+                                <option value='{{$categoria->id }}'>{{$categoria->nombre}}</option>
+                                @endif
+                            @endforeach
+                        </select>
+
+                        @if ($errors->has('categoria_id'))
+                            <span class="text-danger">{{ $errors->first('categoria_id') }}</span>
+                        @endif
+                    </div>
+
+
+                    <div class="form-group">
+                        <button type="submit" name="actualizar" class="bg-blue-500 hover:bg-blue-700  font-bold py-2 px-4 rounded">
+                            Actualizar contacto
                         </button>
                     </div>
                     {{ csrf_field() }}

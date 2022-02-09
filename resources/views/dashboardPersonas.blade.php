@@ -9,17 +9,19 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-5">
                 <div class="flex">
-                    <div class="flex-auto text-2xl mb-4">Listado de categorías</div>
+                    <div class="flex-auto text-2xl mb-4">Listado de contactos</div>
 
                     <div class="flex-auto text-right mt-2">
                         <a href="/persona" class="bg-blue-500 hover:bg-blue-700  font-bold py-2 px-4 rounded">Añadir
-                            nueva categoría</a>
+                            nuevo contacto</a>
                     </div>
                 </div>
                 <table class="w-full text-md rounded mb-4">
                     <thead>
                     <tr class="border-b">
+                        <th class="text-left p-3 px-5">Estrella</th>
                         <th class="text-left p-3 px-5">Persona</th>
+                        <th class="text-left p-3 px-5">Categoría</th>
                         <th class="text-left p-3 px-5">Acciones</th>
                         <th></th>
                     </tr>
@@ -28,8 +30,22 @@
                     @foreach(auth()->user()->personas as $persona)
                         <tr class="border-b hover:bg-orange-100">
                             <td class="p-3 px-5">
-                                {{$persona->nombre}}
+                                <?php
+                                if ($persona->estrella) { ?>
+                                <img style='width: 30px; height: auto' src='{{asset('images/estrellaLlena.png')}}'>
+                                <?php } else { ?>
+                                <img style='width: 30px; height: auto' src='{{asset('images/estrellaVacia.png')}}'>
+                                <?php } ?>
                             </td>
+
+                            <td class="p-3 px-5">
+                                {{$persona->nombre}}   {{$persona->apellidos}}
+                            </td>
+
+                            <td class="p-3 px-5">
+                                {{auth()->user()->categorias[($persona->categoria_id)-1]->nombre}}
+                            </td>
+
                             <td class="p-3 px-5">
 
                                 <a href="/persona/{{$persona->id}}" name="editar"
