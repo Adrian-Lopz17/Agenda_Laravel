@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
+            {{ __('Categorías') }}
         </h2>
     </x-slot>
 
@@ -12,14 +12,15 @@
                     <div class="flex-auto text-2xl mb-4">Listado de categorías</div>
 
                     <div class="flex-auto text-right mt-2">
-                        <a href="/categoria" class="bg-blue-500 hover:bg-blue-700  font-bold py-2 px-4 rounded">Add new Categoria</a>
+                        <a href="/categoria" class="bg-blue-500 hover:bg-blue-700  font-bold py-2 px-4 rounded">Añadir
+                            nueva categoría</a>
                     </div>
                 </div>
                 <table class="w-full text-md rounded mb-4">
                     <thead>
                     <tr class="border-b">
                         <th class="text-left p-3 px-5">Categoría</th>
-                        <th class="text-left p-3 px-5">Actions</th>
+                        <th class="text-left p-3 px-5">Acciones</th>
                         <th></th>
                     </tr>
                     </thead>
@@ -31,9 +32,13 @@
                             </td>
                             <td class="p-3 px-5">
 
-                                <a href="/categoria/{{$categoria->id}}" name="edit" class="mr-3 text-sm bg-blue-500 hover:bg-blue-700  py-1 px-2 rounded focus:outline-none focus:shadow-outline">Edit</a>
+                                <a href="/categoria/{{$categoria->id}}" name="editar"
+                                   class="mr-3 text-sm bg-blue-500 hover:bg-blue-700  py-1 px-2 rounded focus:outline-none focus:shadow-outline">Editar</a>
                                 <form action="/categoria/{{$categoria->id}}" class="inline-block">
-                                    <button type="submit" name="delete" formmethod="POST" class="text-sm bg-red-500 hover:bg-red-700  py-1 px-2 rounded focus:outline-none focus:shadow-outline">Delete</button>
+                                    <button type="submit" name="eliminar" formmethod="POST"
+                                            class="text-sm bg-red-500 hover:bg-red-700  py-1 px-2 rounded focus:outline-none focus:shadow-outline">
+                                        Eliminar
+                                    </button>
                                     {{ csrf_field() }}
                                 </form>
                             </td>
