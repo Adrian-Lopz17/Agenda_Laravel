@@ -51,14 +51,21 @@
                         <label for="categoria_id" class="col-md-2 control-label">Categoría</label>
                         <select name='categoria_id'
                                 class="bg-gray-100 rounded border border-gray-400 leading-normal resize-none w-full h-20 py-2 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white">
-                            <option value='{{$persona->categoria_id}}' selected>
-                                {{auth()->user()->categorias[$persona->categoria_id-1]->nombre}}
-                            </option>
+                            {{--<option value='{{$persona->categoria_id}}' selected>
+                                @foreach(auth()->user()->categorias as $categoria)
+                                    @if($persona->categoria_id == $categoria->id)
+                                        {{$categoria->nombre}}
+                                    @endif
+                                @endforeach
+                            </option>--}}
 
-                            @foreach(auth()->user()->categorias as $categoria)
-                                @if($categoria->id != $persona->categoria_id){
-                                <option value='{{$categoria->id }}'>{{$categoria->nombre}}</option>
+                            @foreach (auth()->user()->categorias as $categoria)
+                                @php $seleccion = ""; @endphp
+                                @if ($categoria->id == $persona->categoria_id)
+                                    @php $seleccion = $categoria->id == $persona->categoria_id ? "selected" : ""; @endphp
                                 @endif
+
+                                <option value='{{$categoria->id }}' {{$seleccion}}>{{$categoria->nombre}}</option>
                             @endforeach
                         </select>
 

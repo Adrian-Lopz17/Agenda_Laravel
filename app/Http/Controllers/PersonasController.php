@@ -27,6 +27,7 @@ class PersonasController extends Controller
             'estrella' => 'required',
             'categoria_id' => 'required'
         ]);
+
         $persona = new Persona();
         $persona->nombre = $request->nombre;
         $persona->apellidos = $request->apellidos;

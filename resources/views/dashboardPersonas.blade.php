@@ -30,12 +30,11 @@
                     @foreach(auth()->user()->personas as $persona)
                         <tr class="border-b hover:bg-orange-100">
                             <td class="p-3 px-5">
-                                <?php
-                                if ($persona->estrella) { ?>
-                                <img style='width: 30px; height: auto' src='{{asset('images/estrellaLlena.png')}}'>
-                                <?php } else { ?>
-                                <img style='width: 30px; height: auto' src='{{asset('images/estrellaVacia.png')}}'>
-                                <?php } ?>
+                                @if ($persona->estrella)
+                                    <img style='width: 30px; height: auto' src='{{asset('images/estrellaLlena.png')}}'>
+                                @else
+                                    <img style='width: 30px; height: auto' src='{{asset('images/estrellaVacia.png')}}'>
+                                @endif
                             </td>
 
                             <td class="p-3 px-5">
@@ -43,7 +42,12 @@
                             </td>
 
                             <td class="p-3 px-5">
-                                {{auth()->user()->categorias[($persona->categoria_id)-1]->nombre}}
+                              {{--  {{auth()->user()->categorias[($persona->categoria_id)]->nombre}}--}}
+                                @foreach(auth()->user()->categorias as $categoria)
+                                    @if($persona->categoria_id == $categoria->id)
+                                        {{$categoria->nombre}}
+                                    @endif
+                                @endforeach
                             </td>
 
                             <td class="p-3 px-5">
