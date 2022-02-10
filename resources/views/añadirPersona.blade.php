@@ -68,9 +68,7 @@
                     </div>
 
                     <div class="form-group">
-                        <button type="submit" class="bg-blue-500 hover:bg-blue-700  font-bold py-2 px-4 rounded">Añadir
-                            persona
-                        </button>
+                        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Añadir contacto</button>
                     </div>
                     {{ csrf_field() }}
                 </form>

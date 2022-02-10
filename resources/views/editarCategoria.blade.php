@@ -21,7 +21,7 @@
 
                     <div class="form-group">
                         <button type="submit" name="actualizar"
-                                class="bg-blue-500 hover:bg-blue-700  font-bold py-2 px-4 rounded">Actualizar categoría
+                                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Actualizar categoría
                         </button>
                     </div>
                     {{ csrf_field() }}

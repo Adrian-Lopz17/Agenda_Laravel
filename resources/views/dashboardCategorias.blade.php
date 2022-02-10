@@ -12,7 +12,7 @@
                     <div class="flex-auto text-2xl mb-4">Listado de categorías</div>
 
                     <div class="flex-auto text-right mt-2">
-                        <a href="/categoria" class="bg-blue-500 hover:bg-blue-700  font-bold py-2 px-4 rounded">Añadir
+                        <a href="/categoria" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Añadir
                             nueva categoría</a>
                     </div>
                 </div>
@@ -33,10 +33,10 @@
                             <td class="p-3 px-5">
 
                                 <a href="/categoria/{{$categoria->id}}" name="editar"
-                                   class="mr-3 text-sm bg-blue-500 hover:bg-blue-700  py-1 px-2 rounded focus:outline-none focus:shadow-outline">Editar</a>
+                                   class="mr-3 text-sm bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">Editar</a>
                                 <form action="/categoria/{{$categoria->id}}" class="inline-block">
                                     <button type="submit" name="eliminar" formmethod="POST"
-                                            class="text-sm bg-red-500 hover:bg-red-700  py-1 px-2 rounded focus:outline-none focus:shadow-outline">
+                                            class="text-sm bg-red-500 hover:bg-red-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">
                                         Eliminar
                                     </button>
                                     {{ csrf_field() }}

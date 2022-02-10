@@ -51,14 +51,6 @@
                         <label for="categoria_id" class="col-md-2 control-label">Categoría</label>
                         <select name='categoria_id'
                                 class="bg-gray-100 rounded border border-gray-400 leading-normal resize-none w-full h-20 py-2 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white">
-                            {{--<option value='{{$persona->categoria_id}}' selected>
-                                @foreach(auth()->user()->categorias as $categoria)
-                                    @if($persona->categoria_id == $categoria->id)
-                                        {{$categoria->nombre}}
-                                    @endif
-                                @endforeach
-                            </option>--}}
-
                             @foreach (auth()->user()->categorias as $categoria)
                                 @php $seleccion = ""; @endphp
                                 @if ($categoria->id == $persona->categoria_id)
@@ -76,8 +68,9 @@
 
 
                     <div class="form-group">
-                        <button type="submit" name="actualizar" class="bg-blue-500 hover:bg-blue-700  font-bold py-2 px-4 rounded">
-                            Actualizar contacto
+                        <button type="submit" name="actualizar"
+                                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Actualizar
+                            contacto
                         </button>
                     </div>
                     {{ csrf_field() }}
