@@ -40,12 +40,13 @@
 
                     <div class="form-group">
                         <label for="nombre" class="col-md-2 control-label">Favorito</label>
-                        <textarea name="estrella"
-                                  class="bg-gray-100 rounded border border-gray-400 leading-normal resize-none w-full h-20 py-2 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white">{{$persona->estrella }}</textarea>
+                        <input type="checkbox" name="estrella" @php if($persona->estrella == 1) echo "checked" @endphp
+                        class="bg-gray-100 border-secondary m-4 rounded border border-gray-400 leading-normal resize-none h-6 py-2 px-3 font-medium focus:outline-none focus:bg-white">
                         @if ($errors->has('estrella'))
                             <span class="text-danger">{{ $errors->first('estrella') }}</span>
                         @endif
                     </div>
+
 
                     <div class="form-group">
                         <label for="categoria_id" class="col-md-2 control-label">Categoría</label>
@@ -65,7 +66,6 @@
                             <span class="text-danger">{{ $errors->first('categoria_id') }}</span>
                         @endif
                     </div>
-
 
                     <div class="form-group">
                         <button type="submit" name="actualizar"

@@ -24,7 +24,7 @@ class PersonasController extends Controller
             'nombre' => 'required',
             'apellidos' => 'required',
             'telefono' => 'required',
-            'estrella' => 'required',
+            'estrella',
             'categoria_id' => 'required'
         ]);
 
@@ -32,7 +32,8 @@ class PersonasController extends Controller
         $persona->nombre = $request->nombre;
         $persona->apellidos = $request->apellidos;
         $persona->telefono = $request->telefono;
-        $persona->estrella = $request->estrella;
+        if(!$request->estrella)  $persona->estrella = 0;
+        else                     $persona->estrella = 1;
         $persona->categoria_id = $request->categoria_id;
         $persona->user_id = auth()->user()->id;
 
@@ -60,13 +61,14 @@ class PersonasController extends Controller
                 'nombre' => 'required',
                 'apellidos' => 'required',
                 'telefono' => 'required',
-                'estrella' => 'required',
+                'estrella',
                 'categoria_id' => 'required'
             ]);
             $persona->nombre = $request->nombre;
             $persona->apellidos = $request->apellidos;
             $persona->telefono = $request->telefono;
-            $persona->estrella = $request->estrella;
+            if(!$request->estrella)  $persona->estrella = 0;
+            else                     $persona->estrella = 1;
             $persona->categoria_id = $request->categoria_id;
             $persona->save();
 

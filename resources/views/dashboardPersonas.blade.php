@@ -42,16 +42,10 @@
                             </td>
 
                             <td class="p-3 px-5">
-                              {{--  {{auth()->user()->categorias[($persona->categoria_id)]->nombre}}--}}
-                                @foreach(auth()->user()->categorias as $categoria)
-                                    @if($persona->categoria_id == $categoria->id)
-                                        {{$categoria->nombre}}
-                                    @endif
-                                @endforeach
+                                {{$persona->categoria->nombre}}
                             </td>
 
                             <td class="p-3 px-5">
-
                                 <a href="/persona/{{$persona->id}}" name="editar"
                                    class="mr-3 text-sm text-white bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">Editar</a>
                                 <form action="/persona/{{$persona->id}}" class="inline-block">

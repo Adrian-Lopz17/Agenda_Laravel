@@ -42,10 +42,9 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="estrella" class="col-md-2 control-label">Favorito</label>
-                        <textarea name="estrella"
-                                  class="bg-gray-100 rounded border border-gray-400 leading-normal resize-none w-full h-20 py-2 px-3 font-medium placeholder-gray-700 focus:outline-none focus:bg-white"
-                                  placeholder='Introduce "1" para marcar como favorito'></textarea>
+                        <label for="nombre" class="col-md-2 control-label">Favorito</label>
+                        <input type="checkbox" name="estrella"
+                               class="bg-gray-100 border-secondary m-4 rounded border border-gray-400 leading-normal resize-none h-6 py-2 px-3 font-medium focus:outline-none focus:bg-white">
                         @if ($errors->has('estrella'))
                             <span class="text-danger">{{ $errors->first('estrella') }}</span>
                         @endif
@@ -68,7 +67,10 @@
                     </div>
 
                     <div class="form-group">
-                        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Añadir contacto</button>
+                        <button type="submit"
+                                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Añadir
+                            contacto
+                        </button>
                     </div>
                     {{ csrf_field() }}
                 </form>
