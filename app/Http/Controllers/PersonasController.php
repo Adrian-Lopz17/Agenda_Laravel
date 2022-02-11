@@ -32,7 +32,7 @@ class PersonasController extends Controller
         $persona->nombre = $request->nombre;
         $persona->apellidos = $request->apellidos;
         $persona->telefono = $request->telefono;
-        if(!$request->estrella)  $persona->estrella = 0;
+        if (!$request->estrella) $persona->estrella = 0;
         else                     $persona->estrella = 1;
         $persona->categoria_id = $request->categoria_id;
         $persona->user_id = auth()->user()->id;
@@ -56,6 +56,12 @@ class PersonasController extends Controller
         if (isset($_POST['eliminar'])) {
             $persona->delete();
             return redirect('/dashboardPersonas');
+        } elseif (isset($_POST['clickEstrella'])) {
+            if ($persona->estrella)  $persona->estrella = 0;
+            else                     $persona->estrella = 1;
+            $persona->save();
+
+            return redirect('/dashboardPersonas');
         } else {
             $this->validate($request, [
                 'nombre' => 'required',
@@ -67,7 +73,7 @@ class PersonasController extends Controller
             $persona->nombre = $request->nombre;
             $persona->apellidos = $request->apellidos;
             $persona->telefono = $request->telefono;
-            if(!$request->estrella)  $persona->estrella = 0;
+            if (!$request->estrella) $persona->estrella = 0;
             else                     $persona->estrella = 1;
             $persona->categoria_id = $request->categoria_id;
             $persona->save();
@@ -75,4 +81,28 @@ class PersonasController extends Controller
             return redirect('/dashboardPersonas');
         }
     }
+
+    /*   public function activarEstrella(Request $request, Persona $persona){
+           if (isset($_POST['eliminar'])) {
+               $persona->delete();
+               return redirect('/dashboardPersonas');
+           } else {
+               $this->validate($request, [
+                   'nombre' => 'required',
+                   'apellidos' => 'required',
+                   'telefono' => 'required',
+                   'estrella',
+                   'categoria_id' => 'required'
+               ]);
+               $persona->nombre = $request->nombre;
+               $persona->apellidos = $request->apellidos;
+               $persona->telefono = $request->telefono;
+               if(!$request->estrella)  $persona->estrella = 0;
+               else                     $persona->estrella = 1;
+               $persona->categoria_id = $request->categoria_id;
+               $persona->save();
+
+               return redirect('/dashboardPersonas');
+           }
+       }*/
 }

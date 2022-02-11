@@ -12,8 +12,7 @@
                     <div class="flex-auto text-2xl mb-4">Listado de contactos</div>
 
                     <div class="flex-auto text-right mt-2">
-                        <a href="/persona" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Añadir
-                            nuevo contacto</a>
+                        <a href="/persona" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Añadir nuevo contacto</a>
                     </div>
                 </div>
                 <table class="w-full text-md rounded mb-4">
@@ -30,11 +29,19 @@
                     @foreach(auth()->user()->personas as $persona)
                         <tr class="border-b hover:bg-orange-100">
                             <td class="p-3 px-5">
-                                @if ($persona->estrella)
-                                    <img style='width: 30px; height: auto' src='{{asset('images/estrellaLlena.png')}}'>
-                                @else
-                                    <img style='width: 30px; height: auto' src='{{asset('images/estrellaVacia.png')}}'>
-                                @endif
+
+                                <form action="/persona/{{$persona->id}}" class="inline-block">
+                                    <button type="submit" name="clickEstrella" formmethod="POST"
+                                            class="text-sm bg-transparent hover:bg-red-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">
+                                        @if ($persona->estrella)
+                                            <img style='width: 30px; height: auto' src='{{asset('images/estrellaLlena.png')}}'>
+                                        @else
+                                            <img style='width: 30px; height: auto' src='{{asset('images/estrellaVacia.png')}}'>
+                                        @endif
+                                    </button>
+                                    {{ csrf_field() }}
+                                </form>
+
                             </td>
 
                             <td class="p-3 px-5">
