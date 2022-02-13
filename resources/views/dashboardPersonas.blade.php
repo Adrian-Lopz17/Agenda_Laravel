@@ -29,7 +29,6 @@
                     @foreach(auth()->user()->personas as $persona)
                         <tr class="border-b hover:bg-orange-100">
                             <td class="p-3 px-5">
-
                                 <form action="/persona/{{$persona->id}}" class="inline-block">
                                     <button type="submit" name="clickEstrella" formmethod="POST"
                                             class="text-sm bg-transparent hover:bg-red-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">
@@ -41,7 +40,6 @@
                                     </button>
                                     {{ csrf_field() }}
                                 </form>
-
                             </td>
 
                             <td class="p-3 px-5">
